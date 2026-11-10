@@ -49,6 +49,12 @@
     function load() { if (typeof Tally !== "undefined" && Tally.loadEmbeds) { Tally.loadEmbeds(); } fill(); }
     var s = d.createElement("script"); s.src = w; s.onload = load; s.onerror = fill; d.body.appendChild(s);
     setTimeout(load, 1500);
+    // After Submit the form shrinks to its thank-you note: bring that note back into view.
+    window.addEventListener("message", function (e) {
+      if (e.origin !== "https://tally.so" || typeof e.data !== "string" || e.data.indexOf("Tally.FormSubmitted") < 0) { return; }
+      var f = d.querySelector("iframe[data-tally-src]");
+      if (f) { setTimeout(function () { window.scrollTo({ top: Math.max(0, f.getBoundingClientRect().top + window.pageYOffset - 140), behavior: "smooth" }); }, 250); }
+    });
   })();
 </script>
 </body>
