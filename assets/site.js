@@ -1,13 +1,20 @@
 // Tyron Freeman Edits: fade sections up once, and play the featured video in place on the real site.
 (function () {
+  // The fade is an extra. It only switches on when the page is really on screen and the browser can do it;
+  // otherwise everything simply shows. A safety timer shows anything still hidden after 4 seconds on screen.
   var els = document.querySelectorAll('.reveal');
-  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    els.forEach(function (el) { el.classList.add('in'); });
-  } else {
+  var ok = ('IntersectionObserver' in window) && document.visibilityState === 'visible' &&
+           !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (ok) {
+    document.documentElement.classList.add('anim');
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
     }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
     els.forEach(function (el) { io.observe(el); });
+    setTimeout(function () {
+      var vh = window.innerHeight;
+      els.forEach(function (el) { if (el.getBoundingClientRect().top < vh) el.classList.add('in'); });
+    }, 4000);
   }
   var host = location.hostname;
   var canEmbed = /(^|\.)tyronfreemanedits\.com$/.test(host) || /\.github\.io$/.test(host) || host === 'localhost';
