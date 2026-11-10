@@ -22,7 +22,7 @@ p { margin: 0; }
 .band { width: 100%; }
 .band.grey { background: var(--bg-2); }
 .band.dark { background: var(--band-dark); color: var(--fg-on-dark); }
-.wrap { max-width: 1080px; margin: 0 auto; padding-block: clamp(56px, 8vw, 104px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.wrap { max-width: 1120px; margin: 0 auto; padding-block: clamp(56px, 8vw, 104px); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .wrap.tight { padding-block: 14px; }
 .wrap.slim { padding-block: clamp(24px, 4vw, 44px); }
 .wrap.narrow { max-width: 760px; }
@@ -145,6 +145,21 @@ footer code { font-family: var(--font); user-select: all; }
 .prose figcaption { color: var(--muted); font-size: 0.9rem; }
 .formbox { border: 1px solid var(--line); border-radius: 22px; padding: clamp(14px, 3vw, 28px); background: var(--card); }
 .formbox iframe { width: 100%; border: 0; min-height: 720px; display: block; }
+
+/* the price block (used only once Tyron switches the price on) */
+.price { display: grid; gap: 2px; padding: 16px 18px; border-radius: 16px; background: var(--bg-2); border: 1px solid var(--line); }
+.price b { font-size: 1.7rem; font-weight: 800; line-height: 1.1; }
+.price span { font-weight: 600; }
+.price small { color: var(--muted); font-size: 0.92rem; margin-top: 6px; }
+
+/* FAQ */
+.faq { display: grid; gap: 10px; }
+.faq details { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 0 20px; }
+.faq summary { cursor: pointer; list-style: none; padding: 16px 0; font-weight: 700; display: flex; justify-content: space-between; gap: 16px; align-items: center; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; font-weight: 600; font-size: 1.3rem; color: var(--accent); flex: none; transition: transform .2s ease; }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq details p { color: var(--muted); padding: 0 0 18px; max-width: 46em; }
 
 /* motion */
 /* Fail safe: everything is visible unless the script has switched the fade on (html.anim). */
