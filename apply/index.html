@@ -25,7 +25,7 @@
       <h1 style="font-size: clamp(2rem, 5vw, 3.2rem);">Apply for a slot</h1>
       <p style="color: var(--muted); font-size: 1.1rem;">Eleven short questions, about two minutes. I read every application myself and reply if it looks like a fit.</p>
       <div class="formbox">
-        <iframe data-tally-src="https://tally.so/embed/RWdOa9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" loading="lazy" width="100%" height="720" title="Apply for a slot"></iframe>
+        <iframe data-tally-src="https://tally.so/embed/RWdOa9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="900" title="Apply for a slot"></iframe>
       </div>
       <p class="note">Form not showing? <a class="textlink" href="https://tally.so/r/RWdOa9">Open it in its own tab.</a></p>
     </div>
@@ -39,15 +39,13 @@
   </div>
 </footer>
 <script>
-  // Tally's own loader: fills the form in and keeps its height right.
+  // Fill the form in straight away, then let Tally's own script keep its height right.
   (function () {
     var d = document, w = "https://tally.so/widgets/embed.js";
-    function load() {
-      if (typeof Tally !== "undefined") { Tally.loadEmbeds(); return; }
-      d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc; });
-    }
-    if (typeof Tally !== "undefined") { load(); }
-    else if (!d.querySelector('script[src="' + w + '"]')) { var s = d.createElement("script"); s.src = w; s.onload = load; s.onerror = load; d.body.appendChild(s); }
+    function fill() { d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc; }); }
+    function load() { if (typeof Tally !== "undefined" && Tally.loadEmbeds) { Tally.loadEmbeds(); } fill(); }
+    var s = d.createElement("script"); s.src = w; s.onload = load; s.onerror = fill; d.body.appendChild(s);
+    setTimeout(load, 1500);
   })();
 </script>
 </body>
