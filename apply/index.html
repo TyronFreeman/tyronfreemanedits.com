@@ -23,7 +23,7 @@
     <div class="wrap narrow stack">
       <p class="eyebrow">Application</p>
       <h1 style="font-size: clamp(2rem, 5vw, 3.2rem);">Apply for a slot</h1>
-      <p style="color: var(--muted); font-size: 1.1rem;">Eleven short questions, about two minutes. I read every application myself and reply if it looks like a fit.</p>
+      <p style="color: var(--muted); font-size: 1.1rem;">Eleven short questions on one page, about two minutes. I read every application myself and reply if it looks like a fit.</p>
       <div class="formbox">
         <iframe data-tally-src="https://tally.so/embed/RWdOa9?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1" width="100%" height="900" title="Apply for a slot"></iframe>
       </div>
@@ -42,6 +42,9 @@
   // Fill the form in straight away, then let Tally's own script keep its height right.
   (function () {
     var d = document, w = "https://tally.so/widgets/embed.js";
+    var ref = '';
+    try { var m = /[?&]ref=([A-Za-z0-9_-]{1,40})/.exec(location.search); ref = m ? m[1] : (sessionStorage.getItem('tfe_ref') || ''); } catch (e) {}
+    if (ref) { d.querySelectorAll("iframe[data-tally-src]").forEach(function (e) { e.dataset.tallySrc += "&ref=" + encodeURIComponent(ref); }); }
     function fill() { d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach(function (e) { e.src = e.dataset.tallySrc; }); }
     function load() { if (typeof Tally !== "undefined" && Tally.loadEmbeds) { Tally.loadEmbeds(); } fill(); }
     var s = d.createElement("script"); s.src = w; s.onload = load; s.onerror = fill; d.body.appendChild(s);

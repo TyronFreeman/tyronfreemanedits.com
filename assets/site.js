@@ -34,3 +34,15 @@
     });
   });
 })();
+
+// Which email did this visitor come from? A link like /?ref=tae carries a short name. It is passed on to the Apply page
+// so the application says where it came from. No cookies; it only lives in this tab.
+(function () {
+  try {
+    var m = /[?&]ref=([A-Za-z0-9_-]{1,40})/.exec(location.search);
+    var ref = m ? m[1] : (sessionStorage.getItem('tfe_ref') || '');
+    if (m) sessionStorage.setItem('tfe_ref', ref);
+    if (!ref) return;
+    document.querySelectorAll('a[href$="apply/"]').forEach(function (a) { a.href = a.href + '?ref=' + encodeURIComponent(ref); });
+  } catch (e) {}
+})();
