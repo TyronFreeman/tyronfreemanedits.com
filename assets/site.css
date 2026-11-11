@@ -206,4 +206,4 @@ h1 { font-size: clamp(2.05rem, 5.1vw, 3.55rem); }
 .pkg-card li { align-items: center; }
 .pkg-card li span { display: block; }
 .wrap.about.compact { padding-block: clamp(28px, 4vw, 52px); }
-@media (max-width: 760px) { .casecard .case { grid-template-columns: 1fr; } }
+@media (max-width: 900px) { .casecard .case { grid-template-columns: 1fr; } }
