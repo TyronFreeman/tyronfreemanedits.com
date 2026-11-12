@@ -211,3 +211,55 @@ h1 { font-size: clamp(2.05rem, 5.1vw, 3.55rem); }
 @media (min-width: 901px) { .casecard .results b { font-size: clamp(1.5rem, 2.5vw, 2rem); } .casecard .results div { padding: 14px 12px; } .casecard .results span { font-size: 0.84rem; } }
 @media (max-width: 1180px) { .casecard .case { grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr); } }
 @media (max-width: 900px) { .casecard .case { grid-template-columns: 1fr; } }
+
+/* ---- Round 3 (ACQ's landing page review, 12 Nov 2026) ---- */
+.hero .heroline { margin: 0; font-size: 1rem; }
+.hero .heroline b { color: var(--fg); font-weight: 700; }
+.hero .cta-row { gap: 14px 26px; }
+
+.valueband .wrap { max-width: 900px; text-align: center; padding-block: clamp(8px, 2vw, 24px) clamp(44px, 6vw, 80px); }
+.valueband h2 { font-size: clamp(1.45rem, 3.1vw, 2.15rem); line-height: 1.16; }
+.valueband p { color: var(--muted); font-size: 1.06rem; max-width: 40em; margin: 16px auto 0; }
+
+.casecard .period { margin: 0 0 -10px; font-weight: 700; font-size: 0.92rem; }
+
+.fit2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; align-items: stretch; }
+.fit2 > div { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: clamp(20px, 2.6vw, 28px); display: grid; gap: 18px; align-content: start; min-width: 0; }
+.fit2 > .not { background: var(--bg-2); }
+.fit2 h3 { font-size: clamp(1.25rem, 2.4vw, 1.6rem); }
+.fit2 ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 13px; }
+.fit2 li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: center; font-weight: 600; line-height: 1.35; }
+.fit2 .not li { font-weight: 500; color: var(--muted); }
+.fit2 .check { color: var(--accent-ink); }
+.cross { width: 28px; height: 28px; border-radius: 50%; background: var(--card); border: 1px solid var(--line); color: var(--muted); display: inline-grid; place-items: center; flex: none; }
+.cross svg { width: 13px; height: 13px; }
+
+.pricebig { display: grid; gap: 6px; padding: 18px 20px; border-radius: 18px; background: var(--bg-2); border: 1px solid var(--line); }
+.pricebig b { font-size: clamp(2.1rem, 4.4vw, 2.8rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.pricebig b small { font-size: 0.42em; font-weight: 700; color: var(--muted); letter-spacing: 0; margin-left: 2px; }
+.pricebig span { color: var(--muted); font-size: 0.95rem; line-height: 1.45; }
+.pkg-card ul { gap: 12px; }
+.testbox { border-top: 1px solid var(--line); padding-top: 16px; display: grid; gap: 4px; scroll-margin-top: 110px; }
+.testbox b { font-weight: 700; }
+.testbox span { color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+.package .cta-row { gap: 14px 24px; }
+
+.package .scope { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: clamp(20px, 3vw, 32px); display: grid; gap: 14px; }
+.scope h3 { font-size: 1.05rem; letter-spacing: 0; }
+.scope ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 40px; }
+.scope li { color: var(--muted); font-size: 0.93rem; line-height: 1.45; padding-left: 16px; position: relative; }
+.scope li::before { content: ""; position: absolute; left: 0; top: 0.62em; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+
+.buys { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+.buys > div { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; display: grid; gap: 10px; align-content: start; min-width: 0; }
+.buys small { font-weight: 700; font-size: 0.74rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent); }
+.buys p { margin: 0; font-weight: 500; line-height: 1.45; }
+
+@media (max-width: 900px) { .buys { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 760px) { .fit2 { grid-template-columns: 1fr; } .scope ul { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .buys { grid-template-columns: 1fr; } }
+/* the package ticks sat high in their circles: `.pkg-card li span { display: block }` (round 2) also hit the tick's own span */
+.pkg-card li .check { display: inline-grid; }
+.pkg-card li { align-items: start; }
+.pkg-card li .check { margin-top: 1px; }
+.pkg-card .paynote { margin: -6px 0 0; }
