@@ -46,3 +46,16 @@
     document.querySelectorAll('a[href$="apply/"]').forEach(function (a) { a.href = a.href + '?ref=' + encodeURIComponent(ref); });
   } catch (e) {}
 })();
+
+// "Watch a recent edit" (round 4): scroll to the video frame and start it. Uses the same click the frame already has.
+(function () {
+  document.querySelectorAll('a[data-play]').forEach(function (b) {
+    b.addEventListener('click', function (ev) {
+      var f = document.querySelector('a.frame[data-yt]');
+      if (!f) return;
+      ev.preventDefault();
+      try { f.scrollIntoView({ behavior: 'smooth', block: 'center' }); } catch (e) {}
+      f.click();
+    });
+  });
+})();
