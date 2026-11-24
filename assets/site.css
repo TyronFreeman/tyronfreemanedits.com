@@ -687,3 +687,187 @@ main .band > .wrap.offerwrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-b
   .bigstats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .bigstats div:last-child { grid-column: 1 / -1; }
 }
+
+/* ---- Round 13 (Tyron, 25 Nov 2026, screen recording 11:25 am): bigger hero button with more room, Jennifer's home card
+   evened out (quote first, equal number cards, a bigger screenshot as tall as the words), the case study's two Studio
+   screens the same size. DRAFT until Tyron says publish. ---- */
+
+/* Hero: a little more room between the words, the video and the button; the button bigger (no price line under it) */
+.hero3 .hero-video { margin-top: 24px; }
+.hero3 .herocta { margin-top: clamp(40px, 5vw, 64px); }
+.hero3 .herocta .btn { font-size: 1.12rem; padding: 18px 34px; min-height: 58px; }
+
+/* Jennifer's card on the home page: words beside the screenshot at the same height; the three numbers in one even row
+   underneath, with the dates in small grey under them */
+.casecard.slim2.r13 { grid-template-columns: minmax(0, 0.45fr) minmax(0, 0.55fr); align-items: center; column-gap: clamp(28px, 3.4vw, 44px); row-gap: 28px; }
+.casecard.r13 .caseleft { gap: 18px; align-content: center; }
+.casecard.r13 .caseleft p { margin: 0; }
+.casecard.r13 .caseleft h2 .ln { display: block; white-space: nowrap; }
+.casecard.r13 .caseleft h2 { font-size: clamp(1.5rem, 2.6vw, 2.15rem); }
+.casecard.r13 .caseright .chart { padding: 8px; }
+.casecard.r13 .caseright .chart img { width: 100%; height: auto; display: block; }
+.casecard.r13 .casebottom { grid-column: 1 / -1; display: grid; gap: 12px; }
+.casecard.r13 .bigstats.even { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.casecard.r13 .bigstats.even div { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;
+  gap: 6px; padding: 18px 12px; min-height: 104px; }
+.casecard.r13 .bigstats.even b { font-size: clamp(1.5rem, 2.6vw, 2.2rem); }
+.casecard.r13 .bigstats.even span { font-size: 0.9rem; line-height: 1.3; }
+.casecard.r13 .period.small { margin: 0 auto; max-width: 64ch; text-align: center; font-weight: 500; color: var(--muted); font-size: var(--t-small, 0.86rem); line-height: 1.45; }
+@media (max-width: 900px) {
+  .casecard.slim2.r13 { grid-template-columns: minmax(0, 1fr); }
+  .casecard.r13 .caseleft h2 .ln { white-space: normal; }
+}
+@media (max-width: 480px) {
+  .casecard.r13 .bigstats.even { gap: 8px; }
+  .casecard.r13 .bigstats.even div { padding: 14px 6px; min-height: 96px; }
+  .casecard.r13 .bigstats.even b { font-size: 1.3rem; }
+  .casecard.r13 .bigstats.even span { font-size: 0.76rem; }
+  .casecard.r13 .period.small { text-align: left; }
+}
+
+/* Case study: the two YouTube Studio screens in frames of exactly the same size */
+.cs12 .csshots.even { align-items: stretch; }
+.cs12 .csshots.even .chart { aspect-ratio: 3 / 2; display: flex; align-items: center; justify-content: center; background: #FFFFFF; padding: 10px; }
+.cs12 .csshots.even .chart img { width: 100%; height: 100%; object-fit: contain; }
+.cs12 .csshots.even figcaption { text-align: center; }
+
+/* Phones: the top bar's button and link stay on one line */
+@media (max-width: 480px) {
+  .top { gap: 10px; }
+  .top .wordmark { font-size: 0.95rem; }
+  .top .btn { white-space: nowrap; padding: 8px 14px; font-size: 0.86rem; min-height: 40px; }
+  .top .textlink { white-space: nowrap; font-size: 0.92rem; }
+}
+
+/* Phones: the number boxes become even rows (number left, words right) on the home page and the case study */
+@media (max-width: 480px) {
+  .casecard.r13 .bigstats.even { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .casecard.r13 .bigstats.even div, .casecard.r13 .bigstats.even div:last-child { grid-column: auto; flex-direction: row; justify-content: flex-start;
+    text-align: left; gap: 14px; padding: 14px 18px; min-height: 0; }
+  .casecard.r13 .bigstats.even b { font-size: 1.5rem; flex: 0 0 100px; white-space: nowrap; }
+  .casecard.r13 .bigstats.even span { font-size: 0.9rem; }
+  .cs12 .rcards { grid-template-columns: minmax(0, 1fr); gap: 8px; }
+  .cs12 .rcard { display: grid; grid-template-columns: 100px minmax(0, 1fr); column-gap: 14px; row-gap: 2px; align-items: center; padding: 14px 18px; }
+  .cs12 .rcard b { grid-row: 1 / span 2; font-size: 1.5rem; white-space: nowrap; }
+  .cs12 .rcard span { font-size: 0.92rem; line-height: 1.3; }
+  .cs12 .rcard small { font-size: 0.8rem; }
+}
+
+/* The apply page: room between the heading, its line and the form (more on a computer: Tyron, 25 Nov 12.20 pm) */
+main .wrap.narrow.stack > h1 + p { margin-top: 10px; }
+main .wrap.narrow.stack > .formbox { margin-top: 20px; }
+@media (min-width: 761px) {
+  main .wrap.narrow.stack > .eyebrow + h1 { margin-top: 16px; }
+  main .wrap.narrow.stack > h1 + p { margin-top: 20px; }
+  main .wrap.narrow.stack > .formbox { margin-top: 48px; }
+}
+
+/* ---- Round 13b (Tyron, 25 Nov 12.20 pm): phones a little slimmer - "too much scrolling ... a bit in your face". Smaller
+   words, tighter gaps and padding on all three pages at phone width only; the computer view does not change. ---- */
+@media (max-width: 480px) {
+  :root { --t-h2: 1.6rem; --t-h3: 1.1rem; --t-body: 0.95rem; --t-small: 0.84rem; --sec: 48px; --gap-s: 14px; --gap-m: 28px; }
+  body { font-size: 15px; }
+  h1, main h1 { font-size: 1.95rem !important; }
+  .hero3 h1.fitw { font-size: clamp(1.8rem, 8.2vw, 2.1rem); }
+  .wrap.hero3 { padding-block: 28px var(--sec); }
+  .hero3 .lede.fitw { margin-top: 14px; }
+  .hero3 .hero-video { margin-top: 24px; }
+  .hero3 .herocta { margin-top: 28px; }
+  .hero3 .herocta .btn { font-size: 1rem; padding: 14px 26px; min-height: 50px; }
+  .eyebrow { font-size: 0.7rem; }
+  .fit2 > div, .pkg-card, .steps > div, .card, .casecard { padding: 18px; }
+  .steps, .cards, .fit2 { gap: 12px; }
+  .offerbox { padding: 28px 16px 24px; gap: 18px; }
+  .offerbox .offerhead h2 { font-size: 1.45rem; }
+  .offerbox .offerlist { padding: 28px 16px 18px; }
+  .offerbox .boxprice b { font-size: 1.9rem; }
+  .points.rows li { padding: 11px 14px; gap: 12px; }
+  .faq summary { padding-block: 12px; }
+  .casecard.r13 .caseleft { gap: 12px; }
+  .casecard.r13 .bigstats.even div, .casecard.r13 .bigstats.even div:last-child { padding: 10px 14px; }
+  .casecard.r13 .bigstats.even b { font-size: 1.3rem; flex-basis: 88px; }
+  .cs12 .csshots, .cs12 .ba, .cs12 .cstime { margin-top: 28px; }
+  .cs12 .csresults { margin-top: 22px; }
+  .cs12 .cshead .lede, .cs12 .cshead .who { margin-top: 14px; }
+  .cs12 .rcard { padding: 10px 14px; grid-template-columns: 88px minmax(0, 1fr); }
+  .cs12 .rcard b { font-size: 1.3rem; }
+  .cs12 .timebox { padding: 20px 16px; }
+  .cs12 .phonefig { padding: 14px; }
+  .cs12 .phonefig .shot img { max-height: 460px; }
+  main .wrap.narrow.stack > h1 + p { font-size: 0.95rem !important; }
+  main .wrap.narrow.stack > .formbox { margin-top: 18px; }
+  .formbox { padding: 10px 12px; border-radius: 16px; }
+  .offerbox .offerlist li { font-size: 0.95rem; }
+  .offerbox .offerlist ul { gap: 12px; }
+}
+
+/* ---- Round 13c (Tyron, 25 Nov 12.20 pm recording): phones smaller again - "you can only see very small parts of each
+   section ... really tedious to scroll". Aim: most of a section fits on one phone screen. Sizes close to a normal phone
+   website (14px body, 22px section headings). Every list line the same size as the body words. More room between the
+   price and the "Every video includes" tag. Phones only; the computer view does not change. ---- */
+@media (max-width: 480px) {
+  :root { --t-h2: 1.38rem; --t-h3: 0.95rem; --t-body: 0.875rem; --t-small: 0.78rem; --sec: 40px; --gap-xs: 8px; --gap-s: 12px; --gap-m: 22px; }
+  body { font-size: 14px; line-height: 1.55; }
+  h1, main h1 { font-size: 1.7rem !important; }
+  h2 { font-size: var(--t-h2); }
+  .hero3 h1.fitw { font-size: clamp(1.55rem, 7vw, 1.8rem); }
+  .wrap.hero3 { padding-block: 22px var(--sec); }
+  .hero3 .hero-copy > .eyebrow { margin-bottom: 10px; }
+  .hero3 .lede.fitw { margin-top: 10px; font-size: var(--t-body); }
+  .hero3 .hero-video { margin-top: 18px; }
+  .hero3 .herocta { margin-top: 20px; }
+  .hero3 .herocta .btn, main .btn { font-size: 0.92rem; padding: 11px 20px; min-height: 44px; }
+  .eyebrow { font-size: 0.64rem; }
+  .fit2 > div, .pkg-card, .steps > div, .card, .casecard { padding: 14px 16px; border-radius: 14px; }
+  .steps > div { gap: 6px; }
+  .steps .num, .steps b + span { margin: 0; }
+  /* the price box */
+  .offerbox { padding: 22px 14px 18px; gap: 14px; border-radius: 18px; }
+  .offerbox .offerhead { gap: 8px; }
+  .offerbox .offerhead h2 { font-size: 1.25rem; }
+  .offerbox .boxprice b { font-size: 1.6rem; }
+  .offerbox .offerlist { margin-top: 14px; padding: 26px 14px 12px; gap: 12px; border-radius: 14px; }
+  .offerbox .offerlist .tag { font-size: 0.68rem; padding: 5px 12px; top: -13px; }
+  .offerbox .offerlist ul { gap: 9px; }
+  .offerbox .offerlist li { font-size: var(--t-body); grid-template-columns: 20px 1fr; gap: 10px; align-items: center; }
+  .offerbox .offerlist .check, .pkg-card .check, .fit2 .check, .points .check { width: 20px; height: 20px; }
+  .offerbox .offerlist .check svg, .fit2 .check svg, .points .check svg { width: 12px; height: 12px; }
+  /* the three tick rows ("Consistent channel look" ...) */
+  .points.rows { gap: 8px; }
+  .points.rows li { font-size: var(--t-body); padding: 10px 12px; gap: 10px; border-radius: 12px; }
+  .points.rows .check { width: 22px; height: 22px; }
+  .points.rows .check svg { width: 12px; height: 12px; }
+  .fit2 li { gap: 10px; }
+  .faq summary { padding-block: 10px; font-size: var(--t-body); }
+  /* Jennifer's card */
+  .casecard.r13 .caseleft { gap: 10px; }
+  .casecard.r13 .caseleft h2 { font-size: 1.3rem; }
+  .casecard.r13 .bigstats.even { gap: 6px; }
+  .casecard.r13 .bigstats.even div, .casecard.r13 .bigstats.even div:last-child { padding: 8px 12px; gap: 10px; }
+  .casecard.r13 .bigstats.even b { font-size: 1.1rem; flex-basis: 72px; }
+  .casecard.r13 .bigstats.even span { font-size: var(--t-small); }
+  .who img { width: 40px; height: 40px; }
+  /* the case study */
+  .cs12 .csshots, .cs12 .ba, .cs12 .cstime { margin-top: 22px; }
+  .cs12 .csresults { margin-top: 16px; }
+  .cs12 .cshead .lede, .cs12 .cshead .who { margin-top: 10px; }
+  .cs12 .cshead .eyebrow { margin-bottom: 10px; }
+  .cs12 .rcards { gap: 6px; }
+  .cs12 .rcard { padding: 8px 12px; grid-template-columns: 72px minmax(0, 1fr); }
+  .cs12 .rcard b { font-size: 1.1rem; }
+  .cs12 .rcard span { font-size: var(--t-body); }
+  .cs12 .rcard small { font-size: var(--t-small); }
+  .cs12 .timebox { padding: 16px 14px; }
+  .cs12 .phonefig { padding: 10px; }
+  .cs12 .phonefig .shot img { max-height: 380px; }
+  /* the apply page */
+  main .wrap.narrow.stack > h1 + p { font-size: var(--t-body) !important; margin-top: 8px; }
+  main .wrap.narrow.stack > .formbox { margin-top: 16px; }
+  .formbox { padding: 6px 8px; }
+  /* nothing bigger than its neighbours: every section heading one size, every line under a heading the body size */
+  main .valueband h2, main #apply h2, main .cs12 h2:not(.tag) { font-size: var(--t-h2) !important; }
+  main .valueband p, main #apply p, main .cs12 .cshead .lede, main .cs12 .ba blockquote, main .notinc summary { font-size: var(--t-body) !important; }
+  main .cs12 .ba blockquote { line-height: 1.55; }
+  .steps > div > :first-child { margin-bottom: 4px; }
+  .cs12 .timebox .btn { font-size: 0.92rem; padding: 11px 16px; min-height: 44px; }
+}
