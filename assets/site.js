@@ -71,14 +71,14 @@
   try {
     var q = new URLSearchParams(location.search), ok = /^[A-Za-z0-9_-]{1,40}$/;
     var s = JSON.parse(sessionStorage.getItem('tfe_src') || '{}');
-    var pick = { source: q.get('source') || q.get('utm_source'), ref: q.get('ref'), campaign: q.get('campaign') || q.get('utm_campaign') };
+    var pick = { source: q.get('source') || q.get('utm_source'), ref: q.get('ref'), campaign: q.get('campaign') || q.get('utm_campaign'), prospect: q.get('prospect') };
     Object.keys(pick).forEach(function (k) { if (pick[k] && ok.test(pick[k])) s[k] = pick[k]; });
     if (!s.source) s.source = document.referrer ? 'web' : 'direct';
     sessionStorage.setItem('tfe_src', JSON.stringify(s));
     document.querySelectorAll('a[data-cta]').forEach(function (a) {
       a.addEventListener('click', function () {
         var u = new URL(a.href, location.href);
-        ['source', 'ref', 'campaign'].forEach(function (k) { if (s[k]) u.searchParams.set(k, s[k]); });
+        ['source', 'ref', 'campaign', 'prospect'].forEach(function (k) { if (s[k]) u.searchParams.set(k, s[k]); });
         u.searchParams.set('cta', a.getAttribute('data-cta'));
         a.href = u.toString();
       });

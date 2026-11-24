@@ -45,7 +45,7 @@
     var keep = {};
     try {
       var q = new URLSearchParams(location.search), saved = JSON.parse(sessionStorage.getItem('tfe_src') || '{}');
-      ['ref', 'source', 'cta', 'campaign'].forEach(function (k) { var v = q.get(k) || saved[k] || (k === 'ref' ? sessionStorage.getItem('tfe_ref') : ''); if (v && /^[A-Za-z0-9_-]{1,40}$/.test(v)) keep[k] = v; });
+      ['ref', 'source', 'cta', 'campaign', 'prospect'].forEach(function (k) { var v = q.get(k) || saved[k] || (k === 'ref' ? sessionStorage.getItem('tfe_ref') : ''); if (v && /^[A-Za-z0-9_-]{1,40}$/.test(v)) keep[k] = v; });
     } catch (e) {}
     var extra = Object.keys(keep).map(function (k) { return '&' + k + '=' + encodeURIComponent(keep[k]); }).join('');
     if (extra) { d.querySelectorAll("iframe[data-tally-src]").forEach(function (e) { e.dataset.tallySrc += extra; }); }
