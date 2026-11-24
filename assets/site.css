@@ -679,3 +679,11 @@ main .band > .wrap.offerwrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-b
   .cs12 .timebox .cta { justify-items: stretch; }
   .cs12 .timebox .btn { width: 100%; justify-content: center; white-space: nowrap; padding-inline: 16px; font-size: 1rem; }
 }
+
+/* ---- Round 12 fix (home numbers, 24 Nov 2026 night, ACQ audit): the home page's three Jennifer cards now carry the
+   case study's checked words ("+14.5K hours of watch time above usual"), which are longer. On small phones the three-across
+   row clipped "subscribers", so (ACQ's rule) two cards across and the third full width. ---- */
+@media (max-width: 480px) {
+  .bigstats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .bigstats div:last-child { grid-column: 1 / -1; }
+}
