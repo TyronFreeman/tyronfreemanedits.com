@@ -335,3 +335,275 @@ h1, h2, h3 { break-after: avoid; }
   .bigstats b { font-size: 1.22rem; }
   .bigstats span { font-size: 0.7rem; }
 }
+
+/* ---- Round 11 (ACQ's review, 24 Nov 2026: one Apply row right under the hero video). Includes rounds 10, 9, 8, 7 and 6 below. ---- */
+.hero3 .herocta { display: grid; justify-items: center; gap: var(--gap-xs, 12px); margin-top: var(--gap-m, 48px); width: 100%; }
+.hero3 .herocta .note { margin: 0; text-align: center; color: var(--muted); }
+/* ---- Round 10 (Tyron's notes, 24 Nov 2026 10:22 am: even spacing, a roomier price box, its list top to bottom). Includes rounds 9, 8, 7 and 6 below. ---- */
+/* ---- Round 9 (Tyron's notes, 24 Nov 2026 10:00 am: one width through the whole page, the price box carries the package). Includes rounds 8, 7 and 6 below. ---- */
+/* ---- Round 8 (Tyron's notes, 23 Nov 2026 6:16 pm: offer box under the video, even text sizes, no black). Includes rounds 7 and 6 below. ---- */
+/* ---- Round 7 (Tyron's notes, 23 Nov 2026: hero top to bottom, subtle motion while scrolling). ---- */
+/* ---- Round 6 (ACQ's second review, 20 Nov 2026: fit before the offer, a shorter case study, one grid) ---- */
+/* the grid: 1120 wide, 40px sides on a computer, 24px on a phone; sections 96px apart (64px on a phone) */
+.wrap, .wrap.hero2, #results .wrap, .wrap.proofwrap { max-width: 1120px; padding-left: max(40px, env(safe-area-inset-left, 0px)); padding-right: max(40px, env(safe-area-inset-right, 0px)); }
+.wrap.tight { max-width: 1120px; }
+main .band > .wrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-block: 96px; }
+main .valueband > .wrap { padding-block: 0 96px; }
+footer .wrap { max-width: 1120px; }
+@media (max-width: 760px) {
+  .wrap, .wrap.hero2, #results .wrap, .wrap.proofwrap { padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
+  main .band > .wrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-block: 64px; }
+  main .valueband > .wrap { padding-block: 0 64px; }
+}
+/* gaps 24px; cards 32px inside on a computer, 24px on a phone */
+.fit2, .steps, .cards, .package { gap: 24px; }
+.fit2 > div, .pkg-card, .steps > div, .card, .casecard { padding: 32px; }
+@media (max-width: 760px) { .fit2 > div, .pkg-card, .steps > div, .card, .casecard { padding: 24px; } }
+/* no line of reading text wider than about 65 characters */
+main p { max-width: 65ch; }
+.center p, .valueband p, .proofline { margin-inline: auto; }
+/* hero: the price on its own line */
+.hero2 .heroprice { margin: 0; font-size: 1.02rem; font-weight: 600; color: var(--muted); }
+.hero2 .heroprice b { font-size: 1.6rem; font-weight: 800; color: var(--fg); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-right: 2px; }
+/* who it is for: the two cards are compared, so they are the same height */
+.fit2.equal { align-items: stretch; }
+/* the case study, cut down: words and numbers on the left, the chart on the right */
+.casecard.slim2 { display: grid; grid-template-columns: minmax(0, 0.5fr) minmax(0, 0.5fr); gap: 40px; align-items: center; }
+.caseleft, .caseright { display: grid; gap: 16px; min-width: 0; align-content: start; }
+.caseleft h2 { font-size: clamp(1.6rem, 2.8vw, 2.2rem); }
+.caseleft .casesub { margin: 0; color: var(--muted); font-size: 1.02rem; }
+.caseleft .period { margin: 0; font-weight: 700; font-size: 0.92rem; }
+.casecard.slim2 .bigstats div { padding: 14px 12px; border-radius: 16px; }
+.casecard.slim2 .bigstats b { font-size: clamp(1.4rem, 2.6vw, 2.1rem); }
+.casecard.slim2 .bigstats span { font-size: 0.86rem; }
+.caseleft .quote { margin: 0; font-size: 1.05rem; border-left: 3px solid var(--accent); padding-left: 16px; }
+.caseright .note, .caseright p { margin: 0; }
+@media (max-width: 900px) { .casecard.slim2 { grid-template-columns: 1fr; } }
+/* the package: price, one line, the button; "Not included" folds away */
+.offer .testline2 { margin: 0; }
+.pkg-card .notinc { border-top: 1px solid var(--line); padding-top: 14px; }
+.pkg-card .notinc summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; min-height: 32px; }
+.pkg-card .notinc summary::-webkit-details-marker { display: none; }
+.pkg-card .notinc summary::after { content: "+"; color: var(--accent); font-size: 1.25rem; font-weight: 600; }
+.pkg-card .notinc[open] summary::after { content: "–"; }
+.pkg-card .notinc p { margin: 8px 0 0; color: var(--muted); font-size: 0.93rem; }
+/* three testimonials in one row on the case study page */
+.cards.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+@media (max-width: 900px) { .cards.three { grid-template-columns: 1fr; } }
+/* every button at least 48px tall */
+.top .btn { min-height: 48px; }
+@media (max-width: 420px) { .top .btn { padding: 8px 14px; font-size: 0.88rem; } }
+/* motion: hero words 350ms, hero video 450ms, each fade 80ms apart, every fade happens once (the numbers and the package use .reveal), buttons lift 2px. Nothing else. */
+@keyframes tfeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+.hero-in { animation: tfeUp .35s ease-out both; }
+.hero-vid { animation: tfeUp .45s ease-out .08s both; }
+html.anim .reveal { transform: translateY(10px); transition: opacity .4s ease, transform .4s ease; }
+html.anim .reveal.in { transform: none; }
+.reveal.d1 { transition-delay: .08s; } .reveal.d2 { transition-delay: .16s; } .reveal.d3 { transition-delay: .24s; }
+.frame:hover { transform: translateY(-2px); }
+@media (prefers-reduced-motion: reduce) {
+  .hero-in, .hero-vid { animation: none; }
+  html.anim .reveal,   .btn:hover, .frame:hover, .card:hover { transform: none; }
+}
+/* the hero keeps under 700px tall on a computer */
+.wrap.hero2 { padding-block: clamp(30px, 3.4vw, 48px) clamp(26px, 2.8vw, 40px); }
+
+/* ===== Round 7 additions ===== */
+/* hero, top to bottom: the headline across the full width, then the sub-headline, the price and buttons, then the video */
+.wrap.hero3 { max-width: 1120px; display: grid; justify-items: center; text-align: center; gap: 0; padding-block: clamp(36px, 4.4vw, 64px) clamp(28px, 3.4vw, 48px); }
+.hero3 .hero-copy { display: grid; gap: 16px; justify-items: center; min-width: 0; width: 100%; }
+.hero3 h1 { font-size: clamp(2.2rem, 5.4vw, 4.4rem); line-height: 1.04; letter-spacing: -0.03em; max-width: 18em; text-wrap: balance; }
+.hero3 .lede { font-size: clamp(1.05rem, 1.7vw, 1.25rem); color: var(--muted); max-width: 40em; margin: 0; }
+.hero3 .support { margin: 0; font-weight: 500; font-size: 1.02rem; line-height: 1.5; }
+.hero3 .heroprice { margin: 0; font-size: 1.02rem; font-weight: 600; color: var(--muted); }
+.hero3 .heroprice b { font-size: 1.6rem; font-weight: 800; color: var(--fg); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-right: 2px; }
+.hero3 .cta-row { justify-content: center; gap: 12px 14px; }
+.hero3 .testline { margin: 0; }
+.hero3 .hero-video { width: 100%; max-width: 960px; margin-top: clamp(28px, 3.6vw, 48px); display: grid; gap: 12px; scroll-margin-top: 90px; }
+.hero3 .hero-video .note { text-align: center; margin: 0 auto; }
+.hero3 .hero-video .frame { border-radius: 24px; padding: 12px; }
+.hero3 .hero-video .frame .bar b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: block; }
+.hero3 .hero-video .frame .bar b::before { display: inline-block; margin-right: 8px; vertical-align: middle; }
+.hero3 .hero-video .frame .bar span { min-width: 0; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; }
+.hero3 .play { width: 88px; height: 88px; }
+@media (max-width: 760px) { .hero3 .hero-video .frame .bar span { display: none; } .hero3 .play { width: 64px; height: 64px; } }
+
+/* motion while scrolling: everything rises a little and fades in once, cards one after another; the hero video settles in from
+   slightly smaller; the case-study numbers count up once. Never the price or the buttons. All off under reduced motion. */
+html.anim .reveal { transform: translateY(18px); transition: opacity .55s cubic-bezier(.2,.7,.2,1), transform .55s cubic-bezier(.2,.7,.2,1); }
+html.anim .reveal.in { transform: none; }
+.hero-in { animation: tfeUp .45s cubic-bezier(.2,.7,.2,1) both; }
+.hero3 .hero-copy > .hero-in:nth-child(2) { animation-delay: .06s; }
+.hero3 .hero-copy > .hero-in:nth-child(3) { animation-delay: .12s; }
+.hero3 .hero-copy > .hero-in:nth-child(n+4) { animation-delay: .18s; }
+@keyframes tfeSettle { from { opacity: 0; transform: translateY(24px) scale(.965); } to { opacity: 1; transform: none; } }
+.hero-vid { animation: tfeSettle .7s cubic-bezier(.2,.7,.2,1) .22s both; }
+html.anim .chart.reveal { transform: translateY(18px) scale(.98); }
+html.anim .chart.reveal.in { transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .hero-in, .hero-vid { animation: none; }
+  html.anim .reveal, html.anim .chart.reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ===== Round 8 additions (Tyron, 23 Nov 2026 6:16 pm) ===== */
+/* one even set of text sizes: headline, section heading, card heading, body, small. Nothing under 15px. */
+:root { --t-h2: clamp(1.9rem, 3.3vw, 2.5rem); --t-h3: 1.3rem; --t-body: 1.06rem; --t-small: 0.95rem; }
+main h2, main .valueband h2, main .caseleft h2 { font-size: var(--t-h2); line-height: 1.12; }
+main h3, main .fit2 h3, main .steps b { font-size: var(--t-h3); line-height: 1.25; }
+main p, main li, main .steps span, main .pkg-card li b, main .card p, main .quote, main .caseleft .quote, main .caseleft .casesub, main .points li, main .faq p, main .faq summary { font-size: var(--t-body); }
+main .note, main .proofline, main .caseright .note, main .casecard.slim2 .bigstats span, main .who span, main .caseleft .period, main .pkg-card .notinc p, main figcaption { font-size: var(--t-small); }
+main .pkg-card li b { font-weight: 600; }
+/* the hero: headline, sub-headline, then the video as wide as the page's content, the same space on both sides */
+.hero3 h1 { font-size: clamp(2.3rem, 5.2vw, 4.2rem); max-width: 17em; }
+.hero3 .hero-video { max-width: none; }
+/* no black anywhere: the video's frame is light grey, the testimonials sit on the light grey band in white cards */
+.frame { background: var(--bg-2); color: var(--fg); border: 1px solid var(--line); box-shadow: 0 20px 50px rgba(14, 14, 14, 0.10); }
+.frame .bar, .frame .bar b { color: var(--fg); }
+.frame .bar span { color: var(--muted); }
+.band.light-voices .card { background: var(--card); border: 1px solid var(--line); color: var(--fg); }
+.band.light-voices .card p, .band.light-voices .who b { color: var(--fg); }
+.band.light-voices .who span, .band.light-voices .note { color: var(--muted); }
+/* the offer in its own small box under the video: four videos, the price, the two buttons, the test edit */
+main .band > .wrap.offerwrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-block: 8px 88px; }
+.wrap.offerwrap { display: grid; justify-items: center; gap: 24px; }
+.offerbox { width: 100%; max-width: 760px; background: var(--bg-2); border: 1px solid var(--line); border-radius: 24px; padding: 32px 40px; display: grid; gap: 16px; justify-items: center; text-align: center; }
+.offerbox .support { margin: 0; font-weight: 600; }
+.offerbox .boxprice { margin: 0; color: var(--muted); font-weight: 600; font-size: var(--t-body); }
+.offerbox .boxprice b { font-size: var(--t-h2); font-weight: 800; color: var(--fg); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; margin-right: 2px; }
+.offerbox .cta-row { justify-content: center; gap: 12px 14px; }
+.offerbox .note, .offerwrap .proofline { margin: 0; }
+/* the package, top to bottom: heading, the list in one box, the button under the list, then one line of terms */
+.pkgdown { justify-items: center; text-align: center; }
+.pkgdown .pkg-card { width: 100%; max-width: 820px; text-align: left; margin-top: 12px; }
+.pkgdown .pkg-card ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 32px; }
+.pkgdown .cta-row { justify-content: center; }
+.pkgdown .pkgnote { margin: 0 auto; color: var(--muted); max-width: 56ch; }
+/* the case study page: the same sizes, and the narrow phone screenshot centred in a light-grey panel */
+.prose h1 { font-size: clamp(2.1rem, 4.2vw, 3rem); }
+.prose h2 { font-size: 1.6rem; }
+.prose p, .prose li, .prose blockquote { font-size: var(--t-body); }
+.prose figcaption { font-size: var(--t-small); }
+.phonefig { background: var(--bg-2); border: 1px solid var(--line); border-radius: 18px; padding: 28px; display: grid; justify-items: center; gap: 12px; margin: 0; }
+.phonefig .chart { width: 100%; max-width: 340px; }
+.phonefig figcaption { text-align: center; }
+@media (max-width: 760px) {
+  .offerbox { padding: 24px; }
+  .pkgdown .pkg-card ul { grid-template-columns: 1fr; }
+  .phonefig { padding: 20px; }
+}
+
+/* ===== Round 9 additions (Tyron, 24 Nov 2026 10:00 am): ONE width through the whole page ===== */
+/* Every block fills the same content box: 1,040px on a computer (the 1,120 grid less its 40px sides), the screen less its sides
+   below that. The headline, the sub-headline, the video, the price box, every card row and the FAQ all line up to it. The
+   headline's size follows that box's real width (container units: 100cqw = the box), so a scrollbar can't make it 15px wider. */
+.hero3 .hero-copy { container-type: inline-size; }
+/* the headline: two lines on a computer (16.1em and 39.9em are the measured widths of the longest lines in Poppins), the widest exactly as wide as the video (the font size follows the width) */
+.hero3 h1.fitw { max-width: none; width: 100%; font-size: calc(100cqw / var(--h1k, 16.1)); line-height: 1.02; text-wrap: initial; }
+.hero3 .lede.fitw { max-width: none; width: 100%; font-size: calc(100cqw / var(--ledek, 39.9)); line-height: 1.45; }
+.hero3 .fitw .ln { display: block; white-space: nowrap; }
+@media (max-width: 760px) {
+  .hero3 h1.fitw { width: auto; font-size: clamp(2.1rem, 9.6vw, 2.6rem); text-wrap: balance; }
+  .hero3 .lede.fitw { width: auto; font-size: var(--t-body); }
+  .hero3 .fitw .ln { display: inline; white-space: normal; }
+}
+/* the offer = the package: as wide as the video, the price with what they get, then the buttons */
+.offerbox { max-width: none; width: 100%; padding: 48px 40px; gap: 28px; justify-items: stretch; }
+.offerbox .offerhead { display: grid; gap: 12px; justify-items: center; text-align: center; }
+.offerbox .offerhead h2, .offerbox .offerhead p { margin: 0; max-width: none; }
+.offerbox .offerhead h2 .ln { display: block; }
+@media (max-width: 760px) { .offerbox .offerhead h2 .ln { display: inline; } }
+.offerbox .offerlist { position: relative; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 40px 36px 24px; display: grid; gap: 20px; text-align: left; }
+.offerbox .offerlist .tag { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: var(--accent-ink); font-weight: 800; font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; white-space: nowrap; }
+.offerbox .offerlist ul { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 40px; }
+.offerbox .offerlist li { display: grid; grid-template-columns: 26px 1fr; gap: 12px; align-items: start; font-weight: 600; max-width: none; }
+.offerbox .offerlist .check { width: 26px; height: 26px; color: var(--accent-ink); }
+.offerbox .offerlist .check svg { width: 15px; height: 15px; }
+.offerbox .notinc { border-top: 1px solid var(--line); padding-top: 14px; }
+.offerbox .notinc summary { cursor: pointer; font-weight: 700; list-style: none; display: flex; justify-content: space-between; align-items: center; min-height: 32px; }
+.offerbox .notinc summary::-webkit-details-marker { display: none; }
+.offerbox .notinc summary::after { content: "+"; color: var(--accent); font-size: 1.25rem; font-weight: 600; }
+.offerbox .notinc[open] summary::after { content: "–"; }
+.offerbox .notinc p { margin: 8px 0 0; color: var(--muted); font-size: var(--t-small); }
+.offerbox .note { text-align: center; margin: 0 auto; max-width: 62ch; }
+.offerbox .cta-row { justify-content: center; }
+main .band > .wrap.offerwrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-block: 8px 96px; }
+/* the problem and mechanism block: as wide as the rest; its three points one under the other, full width, a little bigger */
+.valueband .wrap { max-width: 1120px; }
+.valueband h2 { max-width: none; text-wrap: balance; }
+.valueband p { max-width: none; }
+.points.rows { display: grid; grid-template-columns: 1fr; gap: 12px; width: 100%; margin-top: 32px; }
+.points.rows li { display: flex; width: 100%; max-width: none; border-radius: 16px; padding: 18px 24px; gap: 16px; font-size: var(--t-h3); font-weight: 600; text-align: left; background: var(--bg-2); }
+.points.rows .check { width: 32px; height: 32px; }
+.points.rows .check svg { width: 18px; height: 18px; }
+/* the questions use the same width as everything else */
+#faq .wrap { max-width: 1120px; }
+@media (max-width: 760px) {
+  .offerbox { padding: 28px 20px; gap: 24px; }
+  .offerbox .offerlist { padding: 32px 20px 18px; }
+  .offerbox .offerlist ul { grid-template-columns: 1fr; }
+  .points.rows li { padding: 14px 16px; }
+}
+
+/* ===== Round 10 additions (Tyron, 24 Nov 2026 10:22 am): EVEN spacing, nothing squashed, no big holes ===== */
+/* Four steps only: a label to its heading 12px; a heading to its line 20px; a heading (or line) to the cards, list or button 48px;
+   one section to the next 80px. On a phone: 12 / 16 / 36 / 64. Two white sections in a row share ONE 80px gap, not 80 + 80. */
+:root { --sec: 80px; --gap-xs: 12px; --gap-s: 20px; --gap-m: 48px; }
+@media (max-width: 760px) { :root { --sec: 64px; --gap-s: 16px; --gap-m: 36px; } }
+main .band > .wrap:not(.hero2):not(.hero3):not(.proofwrap), main #results > .wrap.wrap, main .valueband > .wrap.wrap { padding-block: var(--sec); }
+main > section.band:not(.grey) + section.band:not(.grey) > .wrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-top: 0; }
+main .stack { gap: 0; }
+main .stack > * { margin-top: 0; margin-bottom: 0; }
+main .stack > .eyebrow + * { margin-top: var(--gap-xs); }
+main .stack > .eyebrow + .fit2 { margin-top: var(--gap-s); }
+main .stack > h2 + * { margin-top: var(--gap-m); }
+main .stack > h2 + p { margin-top: var(--gap-s); }
+main .stack > * + .cta-row { margin-top: var(--gap-m); }
+main .stack > p + .cta-row { margin-top: calc(var(--gap-m) - 12px); }
+main h2 { margin: 0; }
+.valueband .wrap > h2 { margin: 0; }
+.valueband .wrap > p { margin: var(--gap-s) auto 0; }
+.valueband .points.rows { margin-top: var(--gap-m); }
+/* the hero: more air between the label, the headline, the line under it and the video */
+.wrap.hero3 { padding-block: 72px var(--sec); }
+.hero3 .hero-copy { gap: 0; }
+.hero3 .hero-copy > .eyebrow { margin: 0 0 24px; }
+.hero3 h1.fitw { line-height: 1.1; margin: 0; }
+.hero3 .lede.fitw { margin: 32px 0 0; line-height: 1.5; }
+.hero3 .hero-video { margin-top: 64px; gap: 16px; }
+/* the price box: roomier and a little bigger; the list ONE column, 1 to 7, then "Not included" under it */
+main .band > .wrap.offerwrap:not(.hero2):not(.hero3):not(.proofwrap) { padding-bottom: var(--sec); gap: var(--gap-s); }
+.offerbox { padding: 64px 64px 56px; gap: var(--gap-m); }
+.offerbox .offerhead { gap: 0; }
+.offerbox .offerhead .eyebrow { margin-bottom: var(--gap-xs); }
+.offerbox .offerhead h2 { font-size: clamp(2.1rem, 3.6vw, 2.9rem); line-height: 1.12; }
+.offerbox .boxprice { margin-top: 24px; font-size: 1.15rem; }
+.offerbox .boxprice b { font-size: clamp(2.4rem, 4vw, 3.2rem); }
+.offerbox .offerlist { padding: 56px 48px 40px; }
+.offerbox .offercol { width: fit-content; max-width: 100%; margin: 0 auto; display: grid; gap: 28px; min-width: min(560px, 100%); }
+.offerbox .offerlist ul { grid-template-columns: 1fr; gap: 20px; }
+.offerbox .offerlist li { font-size: 1.18rem; grid-template-columns: 30px 1fr; gap: 16px; align-items: center; }
+.offerbox .offerlist .check { width: 30px; height: 30px; }
+.offerbox .offerlist .check svg { width: 17px; height: 17px; }
+.offerbox .offerlist .tag { font-size: 0.85rem; padding: 7px 16px; top: -16px; }
+.offerbox .notinc summary { font-size: 1.1rem; }
+.offerbox .offerfoot { display: grid; gap: var(--gap-s); justify-items: center; }
+.offerbox .offerfoot .note { margin: 0; }
+.offerbox .offerfoot .note + .note { margin-top: -8px; }
+@media (max-width: 760px) {
+  .wrap.hero3 { padding-block: 40px var(--sec); }
+  .hero3 .hero-copy > .eyebrow { margin-bottom: 16px; }
+  .hero3 .lede.fitw { margin-top: 20px; }
+  .hero3 .hero-video { margin-top: 40px; }
+  .offerbox { padding: 40px 20px 36px; }
+  .offerbox .offerhead h2 { font-size: 1.75rem; }
+  .offerbox .offerlist { padding: 40px 20px 28px; }
+  .offerbox .offercol { min-width: 0; width: 100%; }
+  .offerbox .offerlist li { font-size: 1.06rem; grid-template-columns: 26px 1fr; gap: 12px; }
+  .offerbox .offerlist .check { width: 26px; height: 26px; }
+}
+/* "Hi, I'm Tyron": the same steps inside (label 12, heading to words 20, between paragraphs 12) */
+#about .lines { display: grid; gap: 0; align-content: center; }
+#about .lines > * { margin: 0; }
+#about .lines > .eyebrow + h2 { margin-top: var(--gap-xs); }
+#about .lines > h2 + p { margin-top: var(--gap-s); }
+#about .lines > p + p { margin-top: 12px; }

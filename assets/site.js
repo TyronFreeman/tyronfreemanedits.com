@@ -59,3 +59,48 @@
     });
   });
 })();
+
+// Round 11 (ACQ, 24 Nov 2026): same as round 10; the new Apply row under the hero video is data-cta="hero".
+// Round 10 (Tyron, 24 Nov 2026): same as round 9.
+// Round 9 (Tyron, 24 Nov 2026): same as round 8.
+// Round 8 (Tyron, 23 Nov 2026): same as round 7, the button in the offer box is data-cta="offerbox".
+// Round 6 (ACQ, 20 Nov 2026): remember where a visitor came from (the fades are the site's .reveal, once each).
+// Source, referral and campaign come from the link they arrived on (?source=, ?ref=, ?campaign=, or utm_source / utm_campaign);
+// the CTA is which Apply button they pressed. All four go to the Apply page, which hands them to the form. No cookies: this tab only.
+(function () {
+  try {
+    var q = new URLSearchParams(location.search), ok = /^[A-Za-z0-9_-]{1,40}$/;
+    var s = JSON.parse(sessionStorage.getItem('tfe_src') || '{}');
+    var pick = { source: q.get('source') || q.get('utm_source'), ref: q.get('ref'), campaign: q.get('campaign') || q.get('utm_campaign') };
+    Object.keys(pick).forEach(function (k) { if (pick[k] && ok.test(pick[k])) s[k] = pick[k]; });
+    if (!s.source) s.source = document.referrer ? 'web' : 'direct';
+    sessionStorage.setItem('tfe_src', JSON.stringify(s));
+    document.querySelectorAll('a[data-cta]').forEach(function (a) {
+      a.addEventListener('click', function () {
+        var u = new URL(a.href, location.href);
+        ['source', 'ref', 'campaign'].forEach(function (k) { if (s[k]) u.searchParams.set(k, s[k]); });
+        u.searchParams.set('cta', a.getAttribute('data-cta'));
+        a.href = u.toString();
+      });
+    });
+  } catch (e) {}
+})();
+
+// Round 7 (Tyron, 23 Nov 2026): the case-study numbers count up once when they come into view (the real number is already in
+// the page, so without the script, or with reduced motion, it simply shows).
+(function () {
+  var els = document.querySelectorAll('[data-count]');
+  if (!els.length || !('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  els.forEach(function (b) {
+    var end = +b.getAttribute('data-count'), done = false;
+    var io = new IntersectionObserver(function (es) {
+      if (done || !es[0].isIntersecting) return; done = true; io.disconnect();
+      var t0 = null, dur = 1100;
+      b.textContent = '+0%';
+      function step(t) { if (!t0) t0 = t; var k = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+        b.textContent = '+' + Math.round(end * e) + '%'; if (k < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    }, { threshold: 0.6 });
+    io.observe(b);
+  });
+})();
