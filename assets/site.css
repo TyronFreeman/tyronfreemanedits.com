@@ -957,3 +957,7 @@ main .wrap.narrow.stack > .formbox { margin-top: 20px; }
   .top .nav { gap: 18px; font-size: 0.86rem; }
   .top .btn { padding: 8px 16px; font-size: 0.86rem; min-height: 40px; }
 }
+
+/* ---- Round 14e (Tyron, 25 Nov 2026 ~1.55 pm): a new sub-headline with a pain point and a fix, two lines; its own width key
+   so both lines still run exactly as wide as the video (his 24 Nov rule). Phones keep body size. ---- */
+.hero3 .lede.fitw { --ledek: 33.03; }
