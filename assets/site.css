@@ -961,3 +961,21 @@ main .wrap.narrow.stack > .formbox { margin-top: 20px; }
 /* ---- Round 14e (Tyron, 25 Nov 2026 ~1.55 pm): a new sub-headline with a pain point and a fix, two lines; its own width key
    so both lines still run exactly as wide as the video (his 24 Nov rule). Phones keep body size. ---- */
 .hero3 .lede.fitw { --ledek: 33.03; }
+
+/* ---- Round 14f (Tyron, 25 Nov 2026 ~2.10 pm: "make the text slightly smaller, but keep the same amount of spacing"): the
+   sub-headline back to the old size (26px at 1440, was 31.5), so it no longer runs the full video width; phones 14 -> 13px.
+   The gaps round it are unchanged (32 / 24 on computers, 10 / 18 on phones). ---- */
+.hero3 .lede.fitw { --ledek: 39.9; }
+@media (max-width: 480px) { .hero3 .lede.fitw { font-size: 0.82rem; } }
+
+/* ---- Round 14g (Tyron, 25 Nov 2026 ~2.20 pm: "the same amount of space between the headline, subheadline, and the video").
+   Measured by eye (ink, not boxes) at 1440: eyebrow->headline 35, headline->sub 35, sub->video was 28 -> now 35; the words
+   lift 7px so the video stays put. Phones: 17 / 12 / 20 -> 16 / 16 / 16 (same total height). ---- */
+@media (min-width: 481px) {
+  .hero3 .hero-copy { margin-top: -7px; }
+  .hero3 .hero-video.ba { margin-top: 31px; }
+}
+@media (max-width: 480px) {
+  .hero3 .lede.fitw { margin-top: 14px; }
+  .hero3 .hero-video.ba { margin-top: 14px; }
+}
