@@ -871,3 +871,89 @@ main .wrap.narrow.stack > .formbox { margin-top: 20px; }
   .steps > div > :first-child { margin-bottom: 4px; }
   .cs12 .timebox .btn { font-size: 0.92rem; padding: 11px 16px; min-height: 44px; }
 }
+
+/* ---- Round 14 (ACQ before/after, 25 Nov 2026; Tyron: Jennifer has said yes, price line stays off): the hero's YouTube
+   frame becomes a RAW | EDITED comparison of the same 27 s. Desktop = side by side (one 1920x534 file), under 768 px =
+   stacked (one 720x826 file). One play button, sound only after the tap, captions under the picture in a box that
+   never changes height. Aspect boxes are fixed so nothing jumps while it loads. ---- */
+.hero3 .hero-video.ba { max-width: none; gap: 10px; }
+.ba-box { position: relative; width: 100%; max-width: 100%; aspect-ratio: 1920 / 534; border-radius: 18px; overflow: hidden; background: #FFFFFF; box-shadow: 0 18px 48px rgba(14, 14, 14, .14); }
+.ba-v { display: block; width: 100%; height: 100%; object-fit: cover; background: #0E0E0E; }
+.ba-phone { display: none; }
+.ba-tag { position: absolute; top: 12px; left: 12px; z-index: 2; display: inline-flex; align-items: baseline; gap: 6px; padding: 5px 11px; border-radius: 999px; background: rgba(14, 14, 14, .62); color: #FFFFFF; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; pointer-events: none; }
+.ba-tag small { font-weight: 500; font-size: 0.66rem; letter-spacing: 0.06em; text-transform: none; opacity: .8; }
+.ba-ed { left: calc(50.63% + 12px); background: var(--accent); }
+/* 1.02 pm (Tyron): the play button sits under the picture, never on top of her; it turns into Pause while it plays (same spot, nothing moves) */
+.ba-play { justify-self: center; margin-top: 6px; display: inline-flex; min-height: 50px; align-items: center; gap: 10px; padding: 14px 24px 14px 18px; border: 0; border-radius: 999px; background: var(--accent); color: var(--accent-ink); font: 700 1rem/1 var(--font); cursor: pointer; box-shadow: 0 12px 36px rgba(0, 0, 0, .35); transition: transform .18s ease; }
+.ba-play:hover { transform: scale(1.04); }
+.ba-play:focus-visible { outline: 3px solid var(--fg); outline-offset: 3px; }
+.ba-play svg { width: 22px; height: 22px; }
+.ba-play .ba-ico-pause { display: none; }
+.ba.is-playing .ba-play .ba-ico-play { display: none; }
+.ba.is-playing .ba-play .ba-ico-pause { display: block; }
+.hero3 .hero-video.ba .ba-cap { margin: 6px auto 0; height: 3.3rem; overflow: hidden; max-width: 46em; text-align: center; font-size: 0.86rem; line-height: 1.6; color: var(--muted); font-weight: 400; }
+/* before play the line names the clip; while it plays the same box shows what she is saying (same height, nothing moves) */
+.hero3 .hero-video.ba.is-playing .ba-cap { font-size: 0.98rem; color: var(--fg); font-weight: 500; }
+.ba-copy { display: grid; gap: 12px; justify-items: center; text-align: center; margin-top: clamp(36px, 4.4vw, 56px); width: 100%; }
+.ba-copy p { max-width: 40em; }
+/* 1.02 pm (Tyron): one line on computers; on phones "Raw Footage In." on top, "A Finished YouTube Edit Out." under it */
+.ba-br { display: none; }
+@media (min-width: 768px) { .ba-copy h2 { white-space: nowrap; } }
+@media (max-width: 767px) { .ba-br { display: inline; } }
+.ba-copy h2 { font-size: clamp(1.6rem, 3.2vw, 2.4rem); font-weight: 800; }
+.ba-copy p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.5vw, 1.15rem); }
+.hero3 .ba-copy + .herocta { margin-top: clamp(24px, 3vw, 36px); }
+.hero3 .herocta .watchlink { margin-top: 6px; font-size: 0.98rem; }
+@media (max-width: 767px) {
+  .ba-box { aspect-ratio: 720 / 826; border-radius: 16px; }
+  .ba-desk { display: none; }
+  .ba-phone { display: block; }
+  .ba-ed { left: 12px; top: calc(50.97% + 10px); }
+  .ba-play { font-size: 0.92rem; padding: 12px 20px 12px 15px; min-height: 46px; }
+}
+@media (max-width: 480px) {
+  .ba-tag { top: 9px; left: 9px; font-size: 0.64rem; padding: 4px 9px; }
+  .ba-tag small { font-size: 0.6rem; }
+  .ba-ed { left: 9px; top: calc(50.97% + 8px); }
+  .hero3 .hero-video.ba .ba-cap { font-size: var(--t-small, 0.78rem); height: 4.5rem; }
+  .hero3 .hero-video.ba.is-playing .ba-cap { font-size: var(--t-body, 0.875rem); }
+  .ba-copy { margin-top: 28px; gap: 10px; }
+  .ba-copy h2 { font-size: var(--t-h2, 1.38rem) !important; }
+  .ba-copy p { font-size: var(--t-body, 0.875rem) !important; }
+  .hero3 .ba-copy + .herocta { margin-top: 22px; }
+  .hero3 .herocta .watchlink { font-size: var(--t-body, 0.875rem); }
+}
+@media (prefers-reduced-motion: reduce) { .ba-play { transition: none; } .ba-play:hover { transform: none; } }
+/* ---- Round 14c (Tyron, 25 Nov 2026 ~1.15 pm: "the play button is way too squashed to the video ... make it consistent").
+   One rhythm: video -> button 28, button -> line 18, line -> heading 64 (the gap the page used under the old video),
+   heading -> words 14, words -> Apply 32, Apply -> link 14. Phones: 22 / 14 / 40 / 10 / 22 / 12. The line under the video
+   is exactly one line tall on computers and two on phones (before play it names the clip, while playing it shows her
+   words; both fit, so nothing moves and there is no empty band). ---- */
+.hero3 .hero-video.ba { gap: 0; }
+.ba-box { box-shadow: 0 10px 30px rgba(14, 14, 14, .10); }
+.ba-play { margin-top: 28px; box-shadow: 0 8px 22px rgba(30, 94, 255, .22); }
+.hero3 .hero-video.ba .ba-cap { margin: 18px auto 0; max-width: none; width: 100%; font-size: 0.92rem; line-height: 26px; height: 26px; }
+.hero3 .hero-video.ba.is-playing .ba-cap { font-size: 0.92rem; }
+.ba-copy { margin-top: 64px; gap: 14px; }
+.hero3 .ba-copy + .herocta { margin-top: 32px; gap: 14px; }
+.hero3 .herocta .watchlink { margin-top: 0; }
+@media (max-width: 767px) {
+  .hero3 .hero-video.ba .ba-cap { line-height: 22px; height: 44px; }
+}
+@media (max-width: 480px) {
+  .ba-play { margin-top: 22px; }
+  .hero3 .hero-video.ba .ba-cap, .hero3 .hero-video.ba.is-playing .ba-cap { margin-top: 14px; font-size: 0.82rem; line-height: 22px; height: 44px; }
+  .ba-copy { margin-top: 40px; gap: 10px; }
+  .hero3 .ba-copy + .herocta { margin-top: 22px; gap: 12px; }
+}
+/* ---- Round 14d (Tyron, 25 Nov 2026: the tablet top bar, "please fix this text and centring error"): at 768 wide "The
+   package" and "Apply for a slot" broke onto two lines. Every top-bar item now stays on one line, the links sit centred
+   with equal space to the name and the button, and from 761 to 1023 wide the links and button are a touch smaller. ---- */
+.top .wordmark, .nav a, .top .btn, .top .textlink { white-space: nowrap; }
+.top .nav { flex: 1 1 auto; justify-content: center; min-width: 0; }
+@media (min-width: 761px) and (max-width: 1023px) {
+  .top { gap: 14px; }
+  .top .wordmark { font-size: 0.98rem; gap: 8px; }
+  .top .nav { gap: 18px; font-size: 0.86rem; }
+  .top .btn { padding: 8px 16px; font-size: 0.86rem; min-height: 40px; }
+}

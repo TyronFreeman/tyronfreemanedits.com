@@ -104,3 +104,48 @@
     io.observe(b);
   });
 })();
+
+// Round 14 (ACQ before/after, 25 Nov 2026): one play button for the RAW | EDITED hero. Nothing plays until it is
+// tapped (sound on, controls shown). Only the copy that is showing plays (side by side on computers, stacked on
+// phones). The caption line under the picture follows ba.vtt, even with the sound off.
+(function () {
+  document.querySelectorAll('.ba').forEach(function (ba) {
+    var vids = Array.prototype.slice.call(ba.querySelectorAll('video.ba-v'));
+    var cap = ba.querySelector('.ba-cap');
+    var btn = ba.querySelector('.ba-play');
+    var idle = cap ? cap.textContent : '';
+    var label = btn ? btn.querySelector('span') : null, start = label ? label.textContent : '';
+    if (btn) { btn.querySelector('svg').classList.add('ba-ico-play');
+      btn.insertAdjacentHTML('afterbegin', '<svg class="ba-ico-pause" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 5h4v14H7zM13 5h4v14h-4z" fill="currentColor"/></svg>'); }
+    function mark(on) { ba.classList.toggle('is-playing', on); if (label) label.textContent = on ? 'Pause' : start;
+      if (btn) btn.setAttribute('aria-label', on ? 'Pause the before and after' : 'Play the before and after (27 seconds, with sound)'); }
+    function shown() { return vids.filter(function (v) { return v.offsetParent !== null; })[0] || vids[0]; }
+    vids.forEach(function (v) {
+      var t = v.textTracks && v.textTracks[0];
+      if (!t) return;
+      t.mode = 'hidden';
+      t.addEventListener('cuechange', function () {
+        if (v !== shown() || !cap) return;
+        var c = t.activeCues && t.activeCues[0];
+        cap.textContent = c ? c.text : (ba.classList.contains('is-playing') ? '' : idle);
+      });
+      v.addEventListener('play', function () { mark(true); });
+      v.addEventListener('pause', function () { mark(false); });
+      v.addEventListener('ended', function () { mark(false); v.controls = false; if (cap) cap.textContent = idle; });
+    });
+    if (btn) btn.addEventListener('click', function () {
+      var v = shown();
+      if (!v.paused) { v.pause(); return; }
+      vids.forEach(function (o) { if (o !== v) o.pause(); });
+      if (cap && v.currentTime === 0) cap.textContent = '';
+      v.muted = false; v.controls = true;
+      mark(true);
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { mark(false); v.controls = false; if (cap) cap.textContent = idle; });
+    });
+    window.addEventListener('resize', function () {
+      var v = shown();
+      vids.forEach(function (o) { if (o !== v && !o.paused) { o.pause(); o.controls = false; } });
+    });
+  });
+})();
